@@ -1,7 +1,7 @@
 {
   "name": "mpadmin",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Prerequisites",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -37,5 +37,13 @@
     "react-side-bar": "^1.0.4",
     "react-sidebar-ui": "^1.2.0",
     "request": "^2.88.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennis175168/ReactExpressMod.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dennis175168/ReactExpressMod/issues"
+  },
+  "homepage": "https://github.com/dennis175168/ReactExpressMod#readme"
 }

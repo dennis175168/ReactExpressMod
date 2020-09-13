@@ -21,6 +21,7 @@ class Files extends Component {
 
     渲染前執行
     componentWillMount() {
+        
     }
 
 
