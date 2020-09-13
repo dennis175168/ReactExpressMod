@@ -8,7 +8,7 @@ var cors = require('cors');
 
 var express = require('express');
 var app = new (require('express'));
-var port = 3000;
+var port = 3001;
 var host = '0.0.0.0';
 
 var compiler = webpack(config);

@@ -22,19 +22,15 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <nav class= "navbar navbar-expand-sm bg-dark navbar-dark " >
                     {/* <!-- Brand --> */}
-                        <a class="navbar-brand" href="#">Dennis DEMO</a>
-
+                        <a class="navbar-brand" href="#">MPower 識別系統</a>
+                    
                     {/* <!-- Links --> */}
-                        <ul class="navbar-nav">
-                        {/* <li class="nav-item">
-                            <a class="nav-link" href="#">Link 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link 2</a>
-                        </li> */}
-
+                    {/* ml-auto 將登出靠右對齊 */}
+                    <ul class="navbar-nav ml-auto">  
+                        <li class="nav-item nav-right" style={{ float: 'right' }}>dennis</li>
+                        <li class="nav-item nav-right" style={{float: 'right'}}><a class="nav-link" href="#">登出</a></li>
                         {/* <!-- Dropdown --> */}
                         {/* <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -46,7 +42,7 @@ class Header extends Component {
                             <a class="dropdown-item" href="#">Link 3</a>
                         </div>
                         </li> */}
-                </ul>
+                    </ul>
                 </nav>
             </div>
         );
