@@ -7,7 +7,8 @@ class Sidebar1 extends Component {
         super(props);
 
         this.state = { width: 0, height: 0 };
-        this.state = { fin_hh: ''};
+        this.state = {
+            fin_hh: window.innerHeight};
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.state = {
             default: [{
@@ -36,10 +37,15 @@ class Sidebar1 extends Component {
 
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-        if (this.state.width < 1000) {
-            this.setState({ fin_hh: "" });
-        } else {
+        //alert(window.innerHeight);
+        if (window.innerWidth >= 1000) {
             this.setState({ fin_hh: window.innerHeight });
+            
+            // this.setState({ fin_hh: "" });
+        }
+        else {
+            this.setState({ fin_hh: '' });
+            // this.setState({ fin_hh: window.innerHeight });
         }
     }
     co(a){
@@ -61,21 +67,21 @@ class Sidebar1 extends Component {
                     padding :20,
                     color:'#fff'
                 }}>
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column" >
                         {/* <li class="nav-item">
                             <a class="nav-link" href="#/home">{this.state.width}</a>
                         </li> */}
                         <li class="nav-item">
-                            <a class="nav-link" href="#/home">儀表板</a>
+                            <a class="nav-link" href="#/home" style={{ color: '#fff', paddingBottom:'10px' }}><span class="glyphicon glyphicon-th"></span> 儀表板</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#/users">客戶管理</a>
+                            <a class="nav-link" href="#/users" style={{ color: '#fff', paddingBottom: '10px'}}><span class="glyphicon glyphicon-user"></span> 客戶管理</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#/files">系統文件管理</a>
+                            <a class="nav-link" href="#/files" style={{ color: '#fff', paddingBottom: '10px'}}><span class="glyphicon glyphicon-file"></span> 系統文件管理</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#/admin">系統管理人員</a>
+                            <a class="nav-link " href="#/admin" style={{ color: '#fff', paddingBottom: '10px'}}><span class="glyphicon glyphicon-cog"></span> 系統管理人員</a>
                         </li>
                     </ul>
                 </div>

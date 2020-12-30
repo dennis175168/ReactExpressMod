@@ -20,7 +20,12 @@ class AddAdminForm extends Component {
         var name = document.getElementById("name").value;
         var mail = document.getElementById("email").value;
         var pwd = document.getElementById("pwd").value;
-        const SqlApi_url = "http://127.0.0.1:3000/create_admin";
+        if (document.getElementById("permission").value = "最大管理員"){
+            var permission = "Yes";
+        }else{
+            var permission = "No";
+        }
+        const SqlApi_url = "http://52.197.219.242:3000/create_admin";
 
         fetch(SqlApi_url, {
             method: 'post',
@@ -32,7 +37,8 @@ class AddAdminForm extends Component {
                         [{
                             "username": name,
                             "pwd": mail,
-                            "mail": pwd
+                            "mail": pwd,
+                            "global":permission
                         }]
                 }
             ),//data,
@@ -42,6 +48,7 @@ class AddAdminForm extends Component {
             })
             .then((res) => {
                 alert(JSON.stringify(res));
+                window.location.href = '/#/admin';
                 // this.setState({ users: res });
             });
     }
@@ -63,8 +70,16 @@ class AddAdminForm extends Component {
                     <label for="email">密碼:</label>
                     <input type="password" class="form-control" id="pwd" placeholder="輸入預設密碼" name="pwd"></input>
                 </div>
-                <button type="button" class="btn btn-danger" onClick={() => { this.insert_admin() }}>送出</button>
+                <div class="form-group">
+                    <label for="sel1">管理員權限:</label>
+                    <select class="form-control" id="permission" name="permission">
+                        <option>最大管理員</option>
+                        <option>一般管理員</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-success" onClick={() => { this.insert_admin() }}>送出</button>
             </div>
+            
         );
     }
 }

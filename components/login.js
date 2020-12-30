@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from "react-dom";
 import { json } from 'body-parser';
+import DB_API from '../public/paramaters';
 
 class Login extends Component {
 
@@ -12,15 +13,10 @@ class Login extends Component {
                 a: '123',
                 b: '456'
             }],
-            users: [{
-                "Company_Table_id": "",
-                "Company_Name": "",
-                "Password": "",
-                "Company_Phone": "",
-                "Company_Address": "",
-                "Create_time": "",
-                "Active_Status": "",
-                "Deadline": ""
+            admin: [{
+                "Admin_User_Table_id":"",
+                "Admin_Name": "",
+                "Admin_Email" : ""
             }]
         };
 
@@ -32,7 +28,8 @@ class Login extends Component {
     }
 
     varify(user_name,pwd) {
-        const SqlApi_url = "http://127.0.0.1:3000/login"
+
+        const SqlApi_url = DB_API + "/login_admin";
 
 
         fetch(SqlApi_url, {
@@ -51,10 +48,18 @@ class Login extends Component {
                 return res.json();
             })
             .then((res) => {
-                this.setState({ users: res });
-                if (this.state.users.length>0){
+                this.setState({ admin: res });
+                if (this.state.admin.length > 0){
+                    
+                    localStorage.setItem('user_id', this.state.admin[0].Admin_User_Table_id);
+                    localStorage.setItem('user_name', this.state.admin[0].Admin_Name);
+                    localStorage.setItem('user_mail', this.state.admin[0].Admin_Email);
+                    localStorage.setItem('Global_Admin', this.state.admin[0].Global_Admin);
+                    // console.log(sessionStorage.getItem('user'));
                     window.location.href = '/#/home';
-                }else{alert("Wrong User!!")}
+
+                }else{
+                    alert(" 帳號密碼錯誤!! ")}
             });
     }
 
@@ -67,15 +72,17 @@ class Login extends Component {
                     <form >
                         <div class="form-group">
                             <label for="formGroupExampleInput">帳號</label>
-                                <input type="text" class="form-control" id="input_name" placeholder="ＭPower" />
+                                <input type="text" class="form-control" id="input_name" placeholder="管理員名稱" />
                         </div>
                         <div class="form-group">
                                 <label for="formGroupExampleInput2">密碼</label>
-                                <input type="password" class="form-control" id="input_pwd" placeholder="" />
+                                <input type="password" class="form-control" id="input_pwd" placeholder="密碼" />
                         </div>
-                            <button type="button" class="btn btn-primary" onClick={()=>{
+                        <button type="button" class="btn btn-primary" style={{width:'100%'}} onClick={()=>{
                                 this.varify(document.getElementById("input_name").value, document.getElementById("input_pwd").value)
-                            }}>登入</button>
+                            }}>
+                            登入
+                        </button>
                         {/* {JSON.stringify(this.state.users)} */}
                     </form> 
                 </div>
